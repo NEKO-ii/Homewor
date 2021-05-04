@@ -1,6 +1,6 @@
-//æ—¥è®°æœ¬ç¨‹åº
-//å·²çŸ¥é—®é¢˜ï¼šwin10ç³»ç»Ÿåœ¨è®°äº‹æœ¬ä¸­æ— æ³•å†™å…¥ä¸­æ–‡
-//é—®é¢˜æœªè§£å†³
+//ÈÕ¼Ç±¾³ÌĞò
+//ÒÑÖªÎÊÌâ£ºÊ¹ÓÃVScodeÔÚ¼ÇÊÂ±¾ÖĞÎŞ·¨Ğ´ÈëÖĞÎÄ
+//ÎÊÌâÒÑ½â¾ö2021.05.04
 
 package h428_2;
 import java.io.*;
@@ -8,128 +8,129 @@ import java.util.Scanner;
 
 public class Diary {
     public static void main(String[] args)throws IOException {
-        //å‚æ•°å®šä¹‰
-        Scanner keybord=new Scanner(System.in);//æ–¹ä¾¿è¾“å…¥intå‹æ•°æ®
-        File f=null;//æ–‡ä»¶
-        BufferedWriter input=null;//è¾“å…¥æµ
-        int order;//æŒ‡ä»¤é€‰æ‹©
-        String filename=null;//æ–‡ä»¶å
-        String path="F://NEKO/Code/VS Code/Java/Homework/h428_2/File";//æ—¥è®°æœ¬ä¿å­˜ç›®å½•
-        File dir=new File(path);//ç›®æ ‡ç›®å½•
+        //²ÎÊı¶¨Òå
+        Scanner keybord=new Scanner(System.in);//·½±ãÊäÈëintĞÍÊı¾İ
+        File f=null;//ÎÄ¼ş
+        BufferedWriter input=null;//ÊäÈëÁ÷
+        int order;//Ö¸ÁîÑ¡Ôñ
+        String filename=null;//ÎÄ¼şÃû
+        String path="F://NEKO/Code/VS Code/Java/Homework/h428_2/File";//ÈÕ¼Ç±¾±£´æÄ¿Â¼
+        File dir=new File(path);//Ä¿±êÄ¿Â¼
         FileAccept fa=new FileAccept();
-        fa.setExtendName("txt");//ç›®æ ‡æ‰©å±•å
-        String choose;//æ‰“å¼€å’Œåˆ é™¤æ–‡ä»¶çš„é€‰æ‹©æ–‡ä»¶å
+        fa.setExtendName("txt");//Ä¿±êÀ©Õ¹Ãû
+        String choose;//´ò¿ªºÍÉ¾³ıÎÄ¼şµÄÑ¡ÔñÎÄ¼şÃû
         
-        //æ‰§è¡Œä½“
+        //Ö´ĞĞÌå
         while(true){
-            System.out.print("\nè¯·è¾“å…¥æŒ‡ä»¤ï¼š\n"
-            +"1ï¼šåˆ›å»ºæ—¥è®°æœ¬ï¼›2ï¼šæ‰“å¼€æ—¥è®°æœ¬ï¼›3ï¼šç¼–è¾‘æ—¥è®°æœ¬ï¼›4ï¼šä¿å­˜æ—¥è®°æœ¬ï¼›5ï¼šå…³é—­æ—¥è®°æœ¬ï¼›6ï¼šåˆ é™¤æ—¥è®°æœ¬\n"
-            +"(è¾“å…¥0é€€å‡ºç¨‹åº)  _>");
+            System.out.print("\nÇëÊäÈëÖ¸Áî£º\n"
+            +"1£º´´½¨¼ÇÊÂ±¾£»2£º´ò¿ªÈÕ¼Ç±¾£»3£º±à¼­ÈÕ¼Ç±¾£»4£º±£´æÈÕ¼Ç±¾£»5£º¹Ø±ÕÈÕ¼Ç±¾£»6£ºÉ¾³ıÈÕ¼Ç±¾\n"
+            +"(ÊäÈë0ÍË³ö³ÌĞò)  _>");
             order=keybord.nextInt();
             
-            if(order==0)break;//è¾“å…¥0è·³å‡ºå¾ªç¯ï¼ˆé€€å‡ºç¨‹åºï¼‰
-            if(order==1){//åˆ›å»º
-                System.out.print("è¯·è¾“å…¥æ–‡ä»¶å>");
+            if(order==0)break;//ÊäÈë0Ìø³öÑ­»·£¨ÍË³ö³ÌĞò£©
+            if(order==1){//´´½¨
+                System.out.print("ÇëÊäÈëÎÄ¼şÃû>");
                 filename=null;
                 filename=keybord.next();
                 f=new File(path,filename);
                 if(!f.exists()){
                     f.createNewFile();
-                    System.out.println("æ—¥è®°æœ¬ "+filename+" åˆ›å»ºæˆåŠŸ");
+                    System.out.println("ÈÕ¼Ç±¾ "+filename+" ´´½¨³É¹¦");
                 }
-                else System.out.println("åŒåæ–‡ä»¶å·²å­˜åœ¨");
+                else System.out.println("Í¬ÃûÎÄ¼şÒÑ´æÔÚ");
             }
-            if(order==2){//æ‰“å¼€
-                //ç»™å‡ºå½“å‰æ–‡ä»¶åˆ—è¡¨
+            if(order==2){//´ò¿ª
+                //¸ø³öµ±Ç°ÎÄ¼şÁĞ±í
                 String s[]=dir.list(fa);
-                System.out.println("å½“å‰æ–‡ä»¶ç›®å½•ï¼š");
-                if(s.length==0)System.out.println("(ç©ºç›®å½•)");
+                System.out.println("µ±Ç°ÎÄ¼şÄ¿Â¼£º");
+                if(s.length==0)System.out.println("(¿ÕÄ¿Â¼)");
                 else{
                     for(String name:s){
                         System.out.println(name);
                     }
-                    //è¯¢é—®æ‰“å¼€æ–‡ä»¶
-                    System.out.print("éœ€è¦æ‰“å¼€çš„æ—¥è®°æœ¬ä¸º>");
+                    //Ñ¯ÎÊ´ò¿ªÎÄ¼ş
+                    System.out.print("ĞèÒª´ò¿ªµÄÈÕ¼Ç±¾Îª>");
                     choose=keybord.next();
                     f=new File(path,choose);
                     if(!f.exists()){
-                        System.out.println("æ—¥è®°æœ¬ä¸å­˜åœ¨ï¼Œé‡æ–°è¾“å…¥");
+                        System.out.println("ÈÕ¼Ç±¾²»´æÔÚ£¬ÖØĞÂÊäÈë");
                         input=null;
                     }
                     else{
-                        OutputStreamWriter osw=new OutputStreamWriter(new FileOutputStream(f,true),"UTF-8");//è®¾ç½®æ–°å†…å®¹è¿½åŠ æˆ–è¦†ç›–trueä¸ºè¿½åŠ ï¼Œè®¾ç½®æ ¼å¼
+                        OutputStreamWriter osw=new OutputStreamWriter(new FileOutputStream(f,true),"UTF-8");//ÉèÖÃĞÂÄÚÈİ×·¼Ó»ò¸²¸ÇtrueÎª×·¼Ó£¬ÉèÖÃ¸ñÊ½
                         input=new BufferedWriter(osw);
                         //BufferedWriter input=new BufferedWriter(new FileWriter(f,true));
-                        if(input!=null)System.out.println("æ—¥è®°æœ¬å·²æ‰“å¼€");
+                        if(input!=null)System.out.println("ÈÕ¼Ç±¾ÒÑ´ò¿ª");
                     }
                 }
             }
-            if(order==3){//ä¿®æ”¹
-                //å¦‚æœæ—¥è®°æœ¬æœªæ‰“å¼€ç»™å‡ºæç¤º
+            if(order==3){//ĞŞ¸Ä
+                //Èç¹ûÈÕ¼Ç±¾Î´´ò¿ª¸ø³öÌáÊ¾
                 if(input==null){
-                    System.out.println("æ—¥è®°æœ¬æœªæ‰“å¼€ï¼Œè¯·å…ˆæ‰“å¼€æ—¥è®°æœ¬");
+                    System.out.println("ÈÕ¼Ç±¾Î´´ò¿ª£¬ÇëÏÈ´ò¿ªÈÕ¼Ç±¾");
                 }
                 else{
-                    //è¯»å–å½“å‰æ—¥è®°æœ¬å†…å®¹
-                    System.out.println("å½“å‰æ—¥è®°æœ¬å†…å®¹ä¸ºï¼š");
-                    InputStreamReader isr = new InputStreamReader(new FileInputStream(f),"UTF-8");//è®¾ç½®æ–‡ä»¶è¯»å–æ ¼å¼
+                    //¶ÁÈ¡µ±Ç°ÈÕ¼Ç±¾ÄÚÈİ
+                    System.out.println("µ±Ç°ÈÕ¼Ç±¾ÄÚÈİÎª£º");
+                    InputStreamReader isr = new InputStreamReader(new FileInputStream(f),"UTF-8");//ÉèÖÃÎÄ¼ş¶ÁÈ¡¸ñÊ½
                     BufferedReader output=new BufferedReader(isr);
                     //BufferedReader output=new BufferedReader(new FileReader(f));
                     String s=null;
-                    if(f.length()==0) System.out.println("ï¼ˆç©ºæ–‡ä»¶ï¼‰");
+                    if(f.length()==0) System.out.println("£¨¿ÕÎÄ¼ş£©");
                     while((s=output.readLine())!=null){
                         System.out.println(s);
                     }
                     output.close();
-                    System.out.println("\nè¯·è¾“å…¥å†…å®¹(è¾“å…¥\"//\"ç»“æŸ)>");
+                    System.out.println("\nÇëÊäÈëÄÚÈİ(ÊäÈë\"//\"½áÊø)>");
                     while(true){
                         String in=keybord.nextLine();
                         if("//".equals(in)) break;
                         input.write(in);
                         input.newLine();
+                        input.flush();
                     }
-                   System.out.println("å†™å…¥å®Œæ¯•");
+                   System.out.println("Ğ´ÈëÍê±Ï");
                 }
             }
-            if(order==4){//ä¿å­˜
-                if(input==null) System.out.println("æ—¥è®°æœ¬æœªæ‰“å¼€ï¼Œè¯·å…ˆæ‰“å¼€æ—¥è®°æœ¬");
+            if(order==4){//±£´æ
+                if(input==null) System.out.println("ÈÕ¼Ç±¾Î´´ò¿ª£¬ÇëÏÈ´ò¿ªÈÕ¼Ç±¾");
                 else{
                     input.flush();
-                    System.out.println("æ—¥è®°æœ¬å·²ä¿å­˜");
+                    System.out.println("ÈÕ¼Ç±¾ÒÑ±£´æ");
                 }
             }
-            if(order==5){//å…³é—­
-                if(input==null) System.out.println("æ—¥è®°æœ¬æœªæ‰“å¼€ï¼Œè¯·å…ˆæ‰“å¼€æ—¥è®°æœ¬");
+            if(order==5){//¹Ø±Õ
+                if(input==null) System.out.println("ÈÕ¼Ç±¾Î´´ò¿ª£¬ÇëÏÈ´ò¿ªÈÕ¼Ç±¾");
                 else{
                     input.close();
                     input=null;
-                    System.out.println("æ—¥è®°æœ¬å·²å…³é—­");
+                    System.out.println("ÈÕ¼Ç±¾ÒÑ¹Ø±Õ");
                 }
             }
-            if(order==6){//åˆ é™¤
+            if(order==6){//É¾³ı
                 String s[]=dir.list(fa);
-                System.out.println("å½“å‰æ–‡ä»¶ç›®å½•ï¼š");
-                if(s.length==0)System.out.println("(ç©ºç›®å½•)");
+                System.out.println("µ±Ç°ÎÄ¼şÄ¿Â¼£º");
+                if(s.length==0)System.out.println("(¿ÕÄ¿Â¼)");
                 else{
                     for(String name:s){
                         System.out.println(name);
                     }
                 }
-                //è¯¢é—®åˆ é™¤æ–‡ä»¶
-                System.out.print("éœ€è¦åˆ é™¤çš„æ—¥è®°æœ¬ä¸º>");
+                //Ñ¯ÎÊÉ¾³ıÎÄ¼ş
+                System.out.print("ĞèÒªÉ¾³ıµÄÈÕ¼Ç±¾Îª>");
                 filename=null;
                 choose=keybord.next();
                 f=new File(path,choose);
-                if(!f.exists())System.out.println("æ—¥è®°æœ¬ä¸å­˜åœ¨ï¼Œé‡æ–°è¾“å…¥");
+                if(!f.exists())System.out.println("ÈÕ¼Ç±¾²»´æÔÚ£¬ÖØĞÂÊäÈë");
                 else{
-                    if(input!=null) input.close();//éœ€è¦å…ˆå…³é—­å†åˆ é™¤ï¼Œä¸ç„¶ä¼šå› ä¸ºå ç”¨è€Œåˆ é™¤å¤±è´¥
+                    if(input!=null) input.close();//ĞèÒªÏÈ¹Ø±ÕÔÙÉ¾³ı£¬²»È»»áÒòÎªÕ¼ÓÃ¶øÉ¾³ıÊ§°Ü
                     f.delete();
                     f=null;
-                    System.out.println("æ—¥è®°æœ¬å·²åˆ é™¤");
+                    System.out.println("ÈÕ¼Ç±¾ÒÑÉ¾³ı");
                 }
             }
             //else{
-            //    System.out.println("æŒ‡ä»¤ä¸å­˜åœ¨ï¼Œé‡æ–°è¾“å…¥");
+            //    System.out.println("Ö¸Áî²»´æÔÚ£¬ÖØĞÂÊäÈë");
             //}
         }
         keybord.close();
