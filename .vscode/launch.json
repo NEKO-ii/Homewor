@@ -1,0 +1,189 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Run",
+            "request": "launch",
+            "mainClass": "Calculater.mkone.Run",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Run(1)",
+            "request": "launch",
+            "mainClass": "Calculater.mktwo.Run",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch RunClock",
+            "request": "launch",
+            "mainClass": "Clock.clock.RunClock",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch RunCountDown",
+            "request": "launch",
+            "mainClass": "Clock.countdown.RunCountDown",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeW_03_16",
+            "request": "launch",
+            "mainClass": "h316_407.HomeW_03_16",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeW_03_18",
+            "request": "launch",
+            "mainClass": "h316_407.HomeW_03_18",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeW_03_22",
+            "request": "launch",
+            "mainClass": "h316_407.HomeW_03_22",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeW_03_24",
+            "request": "launch",
+            "mainClass": "h316_407.HomeW_03_24",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeW_04_07",
+            "request": "launch",
+            "mainClass": "h316_407.HomeW_04_07",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Homework_03_31",
+            "request": "launch",
+            "mainClass": "h316_407.Homework_03_31",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringText1",
+            "request": "launch",
+            "mainClass": "h421.StringText1",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringText2",
+            "request": "launch",
+            "mainClass": "h421.StringText2",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringText3",
+            "request": "launch",
+            "mainClass": "h421.StringText3",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringText4",
+            "request": "launch",
+            "mainClass": "h421.StringText4",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringText5",
+            "request": "launch",
+            "mainClass": "h421.StringText5",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringText6",
+            "request": "launch",
+            "mainClass": "h421.StringText6",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch StringText7",
+            "request": "launch",
+            "mainClass": "h421.StringText7",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Text1",
+            "request": "launch",
+            "mainClass": "h426.Text1",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Text2",
+            "request": "launch",
+            "mainClass": "h426.Text2",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Diary",
+            "request": "launch",
+            "mainClass": "h428.Diary",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Diary(1)",
+            "request": "launch",
+            "mainClass": "h428_2.Diary",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch HomeW_05_19",
+            "request": "launch",
+            "mainClass": "h519.HomeW_05_19",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch E1",
+            "request": "launch",
+            "mainClass": "h524.E1",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch E2",
+            "request": "launch",
+            "mainClass": "h524.E2",
+            "projectName": "Homewor_32f84de0"
+        },
+        {
+            "type": "java",
+            "name": "Launch E3",
+            "request": "launch",
+            "mainClass": "h524.E3",
+            "projectName": "Homewor_32f84de0"
+        }
+    ]
+}
