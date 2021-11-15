@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mialab.mybatis_DML_demo.mapper.StudentMapper">
+	<select id="getStudent" resultType="com.mialab.mybatis_DML_demo.domain.Student">
+		select * from student where
+		sno = #{sno}
+	</select>
+	<insert id="addStudent" parameterType="student">
+		insert into
+		student(sno,name,sex,age,dept_no)
+		values(#{sno},#{name},#{sex},#{age},#{dept_no})
+	</insert>
+
+	<resultMap id="studentResultMap" type="student">
+		<id property="sno" column="sno" />
+		<result property="name" column="name" />
+		<result property="sex" column="sex" />
+		<result property="age" column="age" />
+		<result property="dept_no" column="dept_no" />
+	</resultMap>
+
+	<select id="getSudentAll" resultMap="studentResultMap">
+		select * from student
+	</select>
+
+	<update id="updateStudent" parameterType="student">
+		update student set name
+		= #{name}, sex = #{sex}, age = #{age}, dept_no = #{dept_no}
+		where sno =
+		#{sno}
+	</update>
+
+	<delete id="deleteStudent" parameterType="String">
+		delete from student
+		where sno = #{sno}
+	</delete>
+
+</mapper>

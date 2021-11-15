@@ -1,0 +1,4 @@
+com\mialab\mybatis_DML_demo\mapper\StudentMapper.class
+com\mialab\mybatis_DML_demo\domain\Student.class
+com\mialab\mybatis_DML_demo\utils\DBOperatorMgr.class
+com\mialab\mybatis_DML_demo\main\DML_Main.class
