@@ -2,6 +2,10 @@
 import package.login as login
 import package.user as user
 import package.student as stu
+import package.encrypt as encrypt
+import time
+
+encrypt.initFernet()
 
 operation = [["Query Score"], ["Show Student Info", "Student Info Sort", "Update Student Score", "Insert Student", "Delete Student", "Edit Student Info"], ["Show All Account", "Insert Account", "Delete Account", "Edit Account"],
              ["Change Password", "Logout"]]
@@ -29,7 +33,8 @@ print("=== Welcome ===\n")
 
 while (True):
     if (exit == 1):
-        print("\nSystem exit")
+        print("\nSystem Exit")
+        time.sleep(1)
         break
 
     enable.clear()
@@ -42,7 +47,8 @@ while (True):
         lock = login.login()
         level = login.getLevel()
     else:
-        print("\nSystem exit")
+        print("\nSystem Exit")
+        time.sleep(1)
         break
 
     if (lock == 1):
@@ -80,5 +86,6 @@ while (True):
                 print()
                 break
     else:
-        print("\nSystem exit")
+        print("\nSystem Exit")
+        time.sleep(1)
         break

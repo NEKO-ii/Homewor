@@ -1,5 +1,6 @@
 import sys
 import package.path as path
+import package.encrypt as encrypt
 
 stuno: list = []
 stuname: list = []
@@ -110,7 +111,7 @@ def stuInfoSort():
                         stu.sno.ljust(len.get("sno"), " "),
                         strJust(stu.name, len.get("name"), just="left", fill=" "),
                         str(stu.age).ljust(len.get("age"), " "),
-                        stu.clas.ljust(len.get("clas"), " "),
+                        strJust(stu.clas, len.get("clas"), just="left", fill=" "),
                         str(stu.score).rjust(len.get("score"), " ")
                     ]))
                 print("-" * (len.get("line") - 2))
@@ -136,12 +137,8 @@ def updateStuScore():
                 stu = student.get(sno)
                 with open(path.url_student, "r", encoding="UTF-8") as file_stu:
                     read = file_stu.readlines()
-                read[stu.line - 1] = "".join(
-                    [sno.ljust(len["sno"], " "),
-                     strJust(stu.name, len["name"], just="left", fill=" "),
-                     str(stu.age).ljust(len["age"], " "),
-                     stu.clas.ljust(len["clas"], " "),
-                     str(float(new_score)).rjust(len["score"], " "), "\n"])
+                new = "".join([sno.ljust(len["sno"], " "), strJust(stu.name, len["name"], just="left", fill=" "), str(stu.age).ljust(len["age"], " "), stu.clas.ljust(len["clas"], " "), str(float(new_score)).rjust(len["score"], " "), "\n"])
+                read[stu.line - 1] = encrypt.ency(new)
                 with open(path.url_student, "w+", encoding="UTF-8") as file_stu:
                     file_stu.writelines(read)
                     file_stu.flush()
@@ -185,7 +182,7 @@ def insertStu():
                                                 score.rjust(len["score"], " "), "\n"
                                             ])
                                             with open(path.url_student, "a", encoding="UTF-8") as file_stu:
-                                                file_stu.write(write)
+                                                file_stu.write(encrypt.ency(write))
                                                 file_stu.flush()
                                             print("New student insert success")
                                         else:
@@ -248,7 +245,8 @@ def editStuInfo():
                 stu: Student
                 stu = student[sno]
                 index = stu.line - 1
-                text = read[index]
+                cy_text = read[index]
+                text = encrypt.decy(cy_text)
                 arr = text.split()
                 index_arr = int(target) - 1
                 new = input("Input new {0} > ".format(in_nam[target]))
@@ -271,7 +269,7 @@ def editStuInfo():
                     [arr[0].ljust(len["sno"], " "),
                      strJust(arr[1], len["name"], just="left", fill=" "), arr[2].ljust(len["age"], " "),
                      strJust(arr[3], len["clas"], just="left", fill=" "), arr[4].rjust(len["score"], " "), "\n"])
-                read[index] = newline
+                read[index] = encrypt.ency(newline)
                 with open(path.url_student, "w+", encoding="UTF-8") as file_stu:
                     file_stu.writelines(read)
                     file_stu.flush()
@@ -301,7 +299,7 @@ class Student:
 
 def readStudent():
     with open(path.url_student, "r", encoding="UTF-8") as file_stu:
-        stulist = file_stu.readlines()
+        cy_stulist = file_stu.readlines()
     global stuno
     global stuname
     global student
@@ -310,9 +308,10 @@ def readStudent():
     stuname.clear()
     line = 0
     try:
-        for item in stulist:
+        for item in cy_stulist:
             line += 1
-            arr = item.split()
+            text = encrypt.decy(item)
+            arr = text.split()
             stuno.append(arr[0])
             stuname.append(arr[1])
             student[arr[0]] = Student(arr[0], arr[1], int(arr[2]), arr[3], float(arr[4]), line)

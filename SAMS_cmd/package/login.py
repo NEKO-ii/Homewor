@@ -1,4 +1,5 @@
 import package.path as path
+import package.encrypt as encrypt
 import time
 import sys
 
@@ -71,7 +72,8 @@ def readUser():
     try:
         for item in userlist:
             line += 1
-            arr = item.split()
+            text = encrypt.decy(item)
+            arr = text.split()
             uname.append(arr[0])
             user[arr[0]] = User(arr[0], arr[1], int(arr[2]), line)
     except Exception as e:

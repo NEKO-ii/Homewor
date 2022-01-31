@@ -1,5 +1,6 @@
 import package.login as login
 import package.path as path
+import package.encrypt as encrypt
 
 
 def insertUser():
@@ -11,10 +12,9 @@ def insertUser():
         if (checkFormat(username, 1) and checkLegitimacy(username, mode="username") and checkIn(username, uname, 1)):
             password = input("Password > ")
             if (checkFormat(password, 2) and checkLegitimacy(password, mode="password")):
+                newline = "".join([username.ljust(15, " "), password.ljust(20, " "), "1\n"])
                 with open(path.url_user, "a", encoding="UTF-8") as file_user:
-                    file_user.write(username.ljust(15, " "))
-                    file_user.write(password.ljust(20, " "))
-                    file_user.write("1\n")
+                    file_user.write(encrypt.ency(newline))
                     file_user.flush()
                 login.readUser()
                 print("Sign up success\n")
@@ -38,7 +38,7 @@ def deleteUser():
                     line = -1
                     while (True):
                         line += 1
-                        str = read[line]
+                        str = encrypt.decy(read[line])
                         arr = str.split()
                         if (arr[0] == username):
                             read.pop(line)
@@ -59,9 +59,20 @@ def updateUser():
         if (old_pw == login.password):
             new_pw = input("New password > ")
             if (checkFormat(new_pw, 2) and checkLegitimacy(new_pw, mode="password")):
-                with open(path.url_user, "r+", encoding="UTF-8") as file_user:
-                    file_user.seek((login.user.get(login.username).line - 1) * 38 + 15)
-                    file_user.write(new_pw.ljust(20, " "))
+                with open(path.url_user, "r", encoding="UTF-8") as file_user:
+                    read = file_user.readlines()
+                unlen = 15
+                pwlen = 20
+                lelen = 1
+                user: login.User
+                user = login.user.get(login.username)
+                text = encrypt.decy(read[user.line - 1])
+                arr = text.split()
+                arr[1] = new_pw
+                newline = "".join([arr[0].ljust(unlen, " "), arr[1].ljust(pwlen, " "), arr[2].ljust(lelen, " "), "\n"])
+                read[user.line - 1] = encrypt.ency(newline)
+                with open(path.url_user, "w+", encoding="UTF-8") as file_user:
+                    file_user.writelines(read)
                     file_user.flush()
                 login.readUser()
                 print("Password changed success")
@@ -85,38 +96,39 @@ def editUser():
         print("-" * 36)
         username = input("Update user where username > ")
         if (checkIn(username, uname, 2)):
-            linelen = 38
             unlen = 15
             pwlen = 20
             lelen = 1
             user = login.user.get(username)
             line = user.line
             err = 0
-            with open(path.url_user, "r+", encoding="UTF-8") as file_user:
-                cho = input("Update ? Username:1  Password:2  level:3 > ")
-                if (cho in ["1", "2", "3"]):
-                    new = input("Input new value > ")
-                    if (checkFormat(new, int(cho))):
-                        if (cho == "1" and checkLegitimacy(new, mode="username")):
-                            file_user.seek((line - 1) * linelen)
-                            file_user.write(new.ljust(unlen, " "))
-                            file_user.flush()
-                        elif (cho == "2" and checkLegitimacy(new, mode="password")):
-                            file_user.seek((line - 1) * linelen + unlen)
-                            file_user.write(new.ljust(pwlen, " "))
-                            file_user.flush()
-                        elif (cho == "3" and checkLegitimacy(new, mode="level")):
-                            file_user.seek((line - 1) * linelen + unlen + pwlen)
-                            file_user.write(new.ljust(lelen, " "))
-                            file_user.flush()
-                        else:
-                            err = 1
+            with open(path.url_user, "r", encoding="UTF-8") as file_user:
+                read = file_user.readlines()
+            text = encrypt.decy(read[line - 1])
+            arr = text.split()
+            cho = input("Update ? Username:1  Password:2  level:3 > ")
+            if (cho in ["1", "2", "3"]):
+                new = input("Input new value > ")
+                if (checkFormat(new, int(cho))):
+                    if (cho == "1" and checkIn(new, uname, 1) and checkLegitimacy(new, mode="username")):
+                        arr[0] = new
+                    elif (cho == "2" and checkLegitimacy(new, mode="password")):
+                        arr[1] = new
+                    elif (cho == "3" and checkLegitimacy(new, mode="level")):
+                        arr[2] = new
                     else:
                         err = 1
                 else:
                     err = 1
-                    print("Parameter does not exist")
+            else:
+                err = 1
+                print("Parameter does not exist")
             if (err == 0):
+                newline = "".join([arr[0].ljust(unlen, " "), arr[1].ljust(pwlen, " "), arr[2].ljust(lelen, " "), "\n"])
+                read[line - 1] = encrypt.ency(newline)
+                with open(path.url_user, "w+", encoding="UTF-8") as file_user:
+                    file_user.writelines(read)
+                    file_user.flush()
                 login.readUser()
                 print("Account edit success")
         con = input("Enter 1 to continue; 2 to break > ")
